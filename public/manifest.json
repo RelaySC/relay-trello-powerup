@@ -1,11 +1,11 @@
 {
-  "name": "Static Template",
-  "description": "",
-  "details": "A static sample Power-Up hosted on GitHub pages. Feel free to fork [this repository](https://github.com/trello/power-up-template) as a starting point for your own Power-Up.",
+  "name": "Relay",
+  "description": "Trello power-up to enhance Relay's workflow within Trello.",
+  "details": "Trello power-up to enhance Relay's workflow within Trello. Feel free to view [this repository](https://gitlab.com/relay_sc/relay-trello-powerup) for documentation and features.",
   "icon": {
     "url": "./images/logo.png"
   },
-  "author": "Trello Inc",
+  "author": "Relay Media",
   "capabilities": [
     "attachment-sections",
     "attachment-thumbnail",
