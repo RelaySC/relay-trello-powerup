@@ -29,7 +29,7 @@ t.render(function(){
 document.getElementById('save').addEventListener('click', function() {
   return t.set('board', 'shared', 'threshold-on-hold', onHoldSelector.value)
   .then(function(){
-    return t.set('board', 'shared', 'threshold-scraped', scrappedSelector.value);
+    return t.set('board', 'shared', 'threshold-scrapped', scrappedSelector.value);
   })
   .then(function(){
     t.closePopup();
