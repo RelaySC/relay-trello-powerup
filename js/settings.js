@@ -6,25 +6,18 @@ var t = TrelloPowerUp.iframe();
 var onHoldSelector = document.getElementById('on-hold');
 var scrappedSelector = document.getElementById('scrapped');
 
-var percentageRegex = /\d+\%/;
-
-function percentageStringToNumber(value) {
-  var removedSymbol = value.replace('%', '');
-  return parseInt(removedSymbol);
-}
-
 t.render(function(){
   return Promise.all([
     t.get('board', 'shared', 'threshold-on-hold'),
     t.get('board', 'shared', 'threshold-scrapped')
   ])
   .spread(function(onHoldThreshold, scrappedThreshold) {
-    if(onHoldThreshold && percentageRegex.test(onHoldThreshold)) {
-      onHoldSelector.value = percentageStringToNumber(onHoldThreshold);
+    if(onHoldThreshold) {
+      onHoldSelector.value = onHoldThreshold;
     }
 
-    if(scrappedThreshold && percentageRegex.test(scrappedThreshold)) {
-      scrappedSelector.value = percentageStringToNumber(scrappedThreshold);
+    if(scrappedThreshold) {
+      scrappedSelector.value = scrappedThreshold;
     }
   })
   .then(function(){

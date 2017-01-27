@@ -5,11 +5,29 @@
   </head>
   <body>
     <div id="content">
-      <p>You can set the thresholds for the decision making process below.</p>
-      <p><strong>"On-Hold" Threshold</strong></p>
-      <input id="on-hold" placeholder="30%" />
-      <p><strong>"Scrapped" Threshold</strong></p>
-      <input id="scrapped" placeholder="60%" />
+      <p>You can update the settings for the Relay power-up below.</p>
+      <div id="on-hold-section">
+        <p class="u-quiet" style="margin-bottom: 4px" data-i18n-id="on-hold-label">"On-Hold" Threshold</p>
+        <input id="on-hold" input type="number" min="1" max="100">
+        <p class="u-hidden" id="invalid-on-hold-threshold">
+          <img class="emoji" src="./images/warning.png">
+          <span data-i18n-id="invalid-on-hold-threshold-message">You must specify the percentage from 0 to 100.</span>
+        </p>
+        <p class="u-quiet" data-i18n-id="on-hold-threshold-explaination">
+          This will amount of board members required to disapprove an idea before it is placed in "On-Hold" status.
+        </p>
+      </div>
+      <div id="scrapped-section">
+        <p class="u-quiet" style="margin-bottom: 4px" data-i18n-id="scrapped-label">"Scrapped" Threshold</p>
+        <input id="scrapped" input type="number" min="1" max="100">
+        <p class="u-hidden" id="invalid-scrapped-threshold">
+          <img class="emoji" src="./images/warning.png">
+          <span data-i18n-id="invalid-scrapped-threshold-message">You must specify the percentage from 0 to 100.</span>
+        </p>
+        <p class="u-quiet" data-i18n-id="scrapped-threshold-explaination">
+          This will amount of board members required to disapprove an idea before it is placed in "Scrapped" status.
+        </p>
+      </div>
       <button id="save" class="mod-primary">Save</button>
     </div>
     <script src="./js/settings.js"></script>
