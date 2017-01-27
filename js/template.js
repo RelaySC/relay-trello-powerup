@@ -16,6 +16,18 @@ TrelloPowerUp.initialize({
       url: 'https://relay.sc/administration'
     }];
   },
+  'card-buttons': function(t, options){
+    return [{
+      icon: GRAY_ICON,
+      text: 'Voting',
+      callback: function(t){
+        return t.popup({
+          title: "Add New Vote",
+          url: './templates/choose-vote-type.html'
+        });
+      }
+    }];
+  },
   'show-settings': function(t, options){
     return t.popup({
       title: 'Settings',

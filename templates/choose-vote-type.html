@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://trello.com/power-ups/power-up.css">
+    <script src="https://trello.com/power-ups/power-up.min.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <p>Select the type of vote you'd like to start.</p>
+      <div id="project-section">
+        <button id="project">Project Vote</button>
+        <p class="u-quiet" data-i18n-id="project-explaination">
+          This will start a vote using the two-threshold system about the contents of this card.<br/>
+          Only one of these votes can be started per card.
+        </p>
+      </div>
+      <div id="project-section">
+        <button id="options">Option Vote</button>
+        <p class="u-quiet" data-i18n-id="project-explaination">
+          This will start a simple vote where multiple options can be added and upvoted/downvoted.<br/>
+          These votes are excellent for selecting between multiple options.<br/>
+          You can have many of these votes on a single card.
+        </p>
+      </div>
+    </div>
+    <script src="./js/choose-vote-type.js"></script>
+  </body>
+</html>
