@@ -3,20 +3,28 @@
 var Promise = TrelloPowerUp.Promise;
 var t = TrelloPowerUp.iframe();
 
-var fruitSelector = document.getElementById('fruit');
-var vegetableSelector = document.getElementById('vegetable');
+var onHoldSelector = document.getElementById('on-hold');
+var scrappedSelector = document.getElementById('scrapped');
+
+var percentageRegex = /\d+\%/;
+
+function percentageStringToNumber(value) {
+  var removedSymbol = value.replace('%', '');
+  return parseInt(removedSymbol);
+}
 
 t.render(function(){
   return Promise.all([
-    t.get('board', 'shared', 'fruit'),
-    t.get('board', 'private', 'vegetable')
+    t.get('board', 'shared', 'threshold-on-hold'),
+    t.get('board', 'shared', 'threshold-scrapped')
   ])
-  .spread(function(savedFruit, savedVegetable){
-    if(savedFruit && /[a-z]+/.test(savedFruit)){
-      fruitSelector.value = savedFruit;
+  .spread(function(onHoldThreshold, scrappedThreshold) {
+    if(onHoldThreshold && percentageRegex.test(onHoldThreshold)) {
+      onHoldSelector.value = percentageStringToNumber(onHoldThreshold);
     }
-    if(savedVegetable && /[a-z]+/.test(savedVegetable)){
-      vegetableSelector.value = savedVegetable;
+
+    if(scrappedThreshold && percentageRegex.test(scrappedThreshold)) {
+      scrappedSelector.value = percentageStringToNumber(scrappedThreshold);
     }
   })
   .then(function(){
@@ -25,10 +33,10 @@ t.render(function(){
   })
 });
 
-document.getElementById('save').addEventListener('click', function(){
-  return t.set('board', 'private', 'vegetable', vegetableSelector.value)
+document.getElementById('save').addEventListener('click', function() {
+  return t.set('board', 'shared', 'threshold-on-hold', onHoldSelector.value)
   .then(function(){
-    return t.set('board', 'shared', 'fruit', fruitSelector.value);
+    return t.set('board', 'shared', 'threshold-scraped', scrappedSelector.value);
   })
   .then(function(){
     t.closePopup();
