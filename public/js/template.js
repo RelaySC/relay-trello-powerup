@@ -171,24 +171,6 @@ TrelloPowerUp.initialize({
       return [];
     }
   },
-  'attachment-thumbnail': function(t, options){
-    var parkName = formatNPSUrl(t, options.url);
-    if(parkName){
-      // return an object with some or all of these properties:
-      // url, title, image, openText, modified (Date), created (Date), createdBy, modifiedBy
-      return {
-        url: options.url,
-        title: parkName,
-        image: {
-          url: './images/nps.svg',
-          logo: true // false if you are using a thumbnail of the content
-        },
-        openText: 'Open in NPS'
-      };
-    } else {
-      throw t.NotHandled();
-    }
-  },
   'board-buttons': function(t, options){
     return [{
       icon: WHITE_ICON,
